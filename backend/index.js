@@ -18,7 +18,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Logging
-router.use(function(req, res, next) {
+router.use((req, res, next) => {
     // do logging if there is something request
     console.log('Someone request something on your API.');
     next(); // make sure we go to the next routes and don't stop here
@@ -26,7 +26,7 @@ router.use(function(req, res, next) {
 
 
 // Send welcome response from our api server
-app.get('/api', function(req, res) {
+app.get('/api', (req, res) => {
     res.json({ message: 'Welcome To Simple Api Pahlawan Nasional!' });
 });
 
@@ -37,7 +37,7 @@ var Pahlawan = require('./pahlawan.js');
 router.route('/pahlawan')
 
     // create a pahlawan model with method POST with url http://localhost:3000/api/pahlawan)
-    .post(function(req, res) {
+    .post((req, res) => {
 
         var pahlawan = new Pahlawan(); // create a new instance of the Pahlawan
         pahlawan.name = req.body.name; // set the pahlawan name (from input request)
@@ -46,7 +46,7 @@ router.route('/pahlawan')
         pahlawan.senjata = req.body.senjata;
 
         // save pahlawan and check errors
-        pahlawan.save(function(err) {
+        pahlawan.save((err) => {
             if (err)
                 res.send(err);
 
@@ -55,8 +55,8 @@ router.route('/pahlawan')
 
     })
 
-    .get(function(req, res) {
-        Pahlawan.find(function(err, pahlawan) {
+    .get((req, res) => {
+        Pahlawan.find((err, pahlawan) => {
             if (err)
                 res.send(err);
 
@@ -70,22 +70,22 @@ router.route('/pahlawan')
 router.route('/pahlawan/:pahlawan_id')
 
     // get Pahlawan id with GET method http://localhost:8080/api/pahlawan/:pahlawan_id)
-    .get(function(req, res) {
-        Pahlawan.findById(req.params.pahlawan_id, function(err, pahlawan) {
+    .get((req, res) => {
+        Pahlawan.findById(req.params.pahlawan_id, (err, pahlawan) => {
             if (err)
                 res.send(err);
             res.json(pahlawan);
         });
     })
 
-    .put(function(req, res) {
-        Pahlawan.findById(req.params.pahlawan_id, function(err, pahlawan) {
+    .put((req, res) => {
+        Pahlawan.findById(req.params.pahlawan_id, (err, pahlawan) => {
 
             if (err)
                 res.send(err);
 
             pahlawan.name = req.body.name;
-            pahlawan.save(function(err) {
+            pahlawan.save((err) => {
                 if (err)
                     res.send(err);
 
@@ -96,10 +96,10 @@ router.route('/pahlawan/:pahlawan_id')
     })
 
     // delete the pahlawan with id
-    .delete(function(req, res) {
+    .delete((req, res) => {
         Pahlawan.remove({
             _id: req.params.pahlawan_id
-        }, function(err, pahlawan) {
+        }, (err, pahlawan) => {
             if (err)
                 res.send(err);
 
@@ -122,12 +122,12 @@ app.use((req, res, next) => {
 // Styling Home Page Our RestApi for Documentation
 
 /* GET home page. */
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     res.render('pages/index');
 });
 
 // About page 
-app.get('/about', function(req, res) {
+app.get('/about', (req, res) => {
     res.render('pages/about');
 });
 
