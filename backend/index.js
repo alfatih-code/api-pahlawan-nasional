@@ -145,6 +145,7 @@ app.listen(3000, () => {
     console.log("our API running on localhost:3000")
 })
 
+module.exports = app; // for testing
 
 // Not required code but i cannot delete it because feel love with this code. 
 // const MongoClient = require("mongodb").MongoClient
