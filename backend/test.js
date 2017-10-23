@@ -27,25 +27,6 @@ describe('/GET pahlawan', () => {
     });
 });
 
-// describe('/POST pahlawan', () => {
-//     // it('it should not POST a pahlawan without pages field', (done) => {
-//     //   let pahlawan = {
-//     //       title: "The Lord of the Rings",
-//     //       author: "J.R.R. Tolkien",
-//     //       year: 1954
-//     //   }
-//     //       chai.request(server)
-//     //       .post('/pahlawan')
-//     //       .send(pahlawan)
-//     //       .end((err, res) => {
-//     //           res.should.have.status(200);
-//     //           res.body.should.be.a('object');
-//     //           res.body.should.have.property('errors');
-//     //           res.body.errors.should.have.property('pages');
-//     //           res.body.errors.pages.should.have.property('kind').eql('required');
-//     //         done();
-//     //       });
-//     // });
 //     it('it should POST a pahlawan ', (done) => {
 //         let pahlawan = {
 //             name: "Pangeran Diponegoro",
